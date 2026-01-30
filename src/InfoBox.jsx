@@ -1,6 +1,4 @@
-// InfoBox.jsx - This component uses named export
 
-// Named export - you must import it with the same name
 export function InfoBox() {
   return (
     <div className="info">
@@ -12,6 +10,3 @@ export function InfoBox() {
     </div>
   );
 }
-
-// You can also export default if you want
-// export default InfoBox;

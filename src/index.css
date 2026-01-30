@@ -1,11 +1,9 @@
-/* Reset default styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Style the body */
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
@@ -16,13 +14,12 @@ body {
   padding: 20px;
 }
 
-/* Main app container */
 .app {
   width: 100%;
   max-width: 400px;
 }
 
-/* Calculator card */
+
 .calculator {
   background-color: white;
   padding: 30px;
@@ -30,7 +27,6 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Heading */
 h1 {
   color: #333;
   text-align: center;
@@ -38,7 +34,6 @@ h1 {
   font-size: 24px;
 }
 
-/* Input box */
 input {
   width: 100%;
   padding: 12px;
@@ -53,14 +48,12 @@ input:focus {
   border-color: #4CAF50;
 }
 
-/* Button container */
 .buttons {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
 }
 
-/* Buttons */
 button {
   flex: 1;
   padding: 12px;
@@ -71,7 +64,6 @@ button {
   font-weight: bold;
 }
 
-/* Calculate button - green */
 button:first-child {
   background-color: #4CAF50;
   color: white;
@@ -81,7 +73,6 @@ button:first-child:hover {
   background-color: #45a049;
 }
 
-/* Clear button - gray */
 button:last-child {
   background-color: #f44336;
   color: white;
@@ -91,7 +82,6 @@ button:last-child:hover {
   background-color: #da190b;
 }
 
-/* Result box */
 .result {
   background-color: #e7f3ff;
   padding: 15px;
@@ -103,7 +93,6 @@ button:last-child:hover {
   border-left: 4px solid #2196F3;
 }
 
-/* Info box */
 .info {
   background-color: #fff3cd;
   padding: 15px;

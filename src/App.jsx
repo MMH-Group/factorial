@@ -1,103 +1,74 @@
+// Import useState hook from React to manage component state
 import { useState } from 'react';
 import './index.css';
 
 function App() {
+  // State variables to store:
+  // - number: what the user types in
+  // - result: the calculated factorial
   const [number, setNumber] = useState('');
-  const [result, setResult] = useState(null);
-  const [error, setError] = useState('');
+  const [result, setResult] = useState('');
 
-  const calculateFactorial = (n) => {
-    if (n < 0) return null;
-    if (n === 0 || n === 1) return 1;
-    
-    let factorial = 1;
-    for (let i = 2; i <= n; i++) {
-      factorial *= i;
-    }
-    return factorial;
-  };
+  // Function to calculate factorial
+  // Example: 5! = 5 × 4 × 3 × 2 × 1 = 120
+  const calculateFactorial = () => {
+    // Convert the input to a number
+    const num = Number(number);
 
-  const handleCalculate = () => {
-    setError('');
-    setResult(null);
-
-    const num = parseInt(number);
-
+    // Check if input is empty or not a number
     if (number === '' || isNaN(num)) {
-      setError('Please enter a valid number');
+      setResult('Please enter a valid number');
       return;
     }
 
+    // Check if number is negative
     if (num < 0) {
-      setError('Factorial is not defined for negative numbers');
+      setResult('Cannot calculate factorial of negative numbers');
       return;
     }
 
-    if (num > 170) {
-      setError('Number is too large (maximum is 170)');
-      return;
+    // Calculate factorial
+    let factorial = 1;
+    for (let i = 1; i <= num; i++) {
+      factorial = factorial * i;
     }
 
-    const factorial = calculateFactorial(num);
-    setResult(factorial);
+    // Show the result
+    setResult(`${number}! = ${factorial}`);
   };
 
-  const handleReset = () => {
+  // Function to clear everything
+  const clearAll = () => {
     setNumber('');
-    setResult(null);
-    setError('');
-  };
-
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      handleCalculate();
-    }
+    setResult('');
   };
 
   return (
-    <div className="container">
-      <div className="card">
+    <div className="app">
+      <div className="calculator">
         <h1>Factorial Calculator</h1>
-        <p className="subtitle">Enter a number to calculate its factorial</p>
         
-        <div className="input-group">
-          <input
-            type="number"
-            value={number}
-            onChange={(e) => setNumber(e.target.value)}
-            onKeyPress={handleKeyPress}
-            placeholder="Enter a number"
-            className="number-input"
-          />
+        {/* Input box for entering number */}
+        <input
+          type="number"
+          value={number}
+          onChange={(e) => setNumber(e.target.value)}
+          placeholder="Enter a number"
+        />
+
+        {/* Buttons */}
+        <div className="buttons">
+          <button onClick={calculateFactorial}>Calculate</button>
+          <button onClick={clearAll}>Clear</button>
         </div>
 
-        <div className="button-group">
-          <button onClick={handleCalculate} className="btn btn-primary">
-            Calculate
-          </button>
-          <button onClick={handleReset} className="btn btn-secondary">
-            Reset
-          </button>
-        </div>
+        {/* Show result */}
+        {result && <div className="result">{result}</div>}
 
-        {error && (
-          <div className="error-message">
-            {error}
-          </div>
-        )}
-
-        {result !== null && (
-          <div className="result-container">
-            <h2>Result</h2>
-            <p className="result-text">
-              {number}! = <span className="result-value">{result.toLocaleString()}</span>
-            </p>
-          </div>
-        )}
-
+        {/* Information box */}
         <div className="info">
-          <p><strong>Note:</strong> Factorial of n (n!) is the product of all positive integers less than or equal to n.</p>
-          <p>Example: 5! = 5 × 4 × 3 × 2 × 1 = 120</p>
+          <p><strong>What is Factorial?</strong></p>
+          <p>5! = 5 × 4 × 3 × 2 × 1 = 120</p>
         </div>
       </div>
     </div>
